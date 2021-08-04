@@ -3,10 +3,7 @@ import 'models/journal_entry_model.dart';
 
 class JournalEntryDetail extends StatelessWidget {
   final JournalEntryModel entry;
-  final bool isVertical;
-  const JournalEntryDetail(
-      {Key? key, required this.entry, required this.isVertical})
-      : super(key: key);
+  const JournalEntryDetail({Key? key, required this.entry}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -14,6 +11,15 @@ class JournalEntryDetail extends StatelessWidget {
         appBar: AppBar(
           title: Text(entry.dateToString()),
         ),
-        body: Column(children: [Text(entry.title), Text(entry.body)]));
+        body: Padding(
+            padding: EdgeInsets.all(10),
+            child: Column(
+              children: [
+                Text(entry.title!, style: TextStyle(fontSize: 25)),
+                Container(height: 10),
+                Text(entry.body!)
+              ],
+              crossAxisAlignment: CrossAxisAlignment.start,
+            )));
   }
 }
